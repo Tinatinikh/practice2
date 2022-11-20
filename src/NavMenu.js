@@ -1,18 +1,22 @@
 import React from "react";
 import Geo from "./image/Geo.png";
 import USA from  "./image/USA.png";
+import {useContext} from "react";
+import ChangeLanguage from "./Changelanguage";
 
 function NavMenu () {
+    const selectedLanguage = useContext(ChangeLanguage);
+
     return (
         <div className="navitem">
            <nav className="navmenu">
             <ul>
-                <li>Home</li>
-                <li>Friend List</li>
-                <li>Profile</li>
+                <li><a href="#"  className={selectedLanguage.language}></a></li>     
+                <li><a href="#"  className={selectedLanguage.language + 1}></a></li>
+                <li><a href="#"  className={selectedLanguage.language + 2}></a></li>
             </ul>
-            <img className="flag-geo" src={Geo} />
-            <img  className ="flag-usa" src={USA} />
+            <img onClick={() => selectedLanguage.setLanguage ('geo')} className="flag-geo" src={Geo} />
+            <img onClick={() => selectedLanguage.setLanguage('eng')} className ="flag-usa" src={USA} />
            </nav>
         </div>
     )
